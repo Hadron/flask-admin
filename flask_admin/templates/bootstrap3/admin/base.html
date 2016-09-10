@@ -1,7 +1,7 @@
 {% import 'admin/layout.html' as layout with context -%}
 {% import 'admin/static.html' as admin_static with context %}
 <!DOCTYPE html>
-<html>
+<html{% if admin_view.html_attrs %} {{ admin_view.html_attrs|safe }}{% endif %}>
   <head>
     <title>{% block title %}{% if admin_view.category %}{{ admin_view.category }} - {% endif %}{{ admin_view.name }} - {{ admin_view.admin.name }}{% endblock %}</title>
     {% block head_meta %}
@@ -26,7 +26,7 @@
     {% block head_tail %}
     {% endblock %}
   </head>
-  <body>
+  <body{% if admin_view.body_attrs %} {{ admin_view.body_attrs|safe }}{% endif %}>
     {% block page_body %}
     <div class="container">
       <nav class="navbar navbar-default" role="navigation">
